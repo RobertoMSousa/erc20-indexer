@@ -11,6 +11,9 @@ import {
 } from '@chakra-ui/react';
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
+// require('dotenv').config()
+
+
 
 function App() {
   const [userAddress, setUserAddress] = useState('');
@@ -18,10 +21,11 @@ function App() {
   const [hasQueried, setHasQueried] = useState(false);
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
 
+  //0xF93FEb7C16af25244180DB590Dc0Eaf356C7aB01
   async function getTokenBalance() {
     const config = {
-      apiKey: '<-- COPY-PASTE YOUR ALCHEMY API KEY HERE -->',
-      network: Network.ETH_MAINNET,
+      apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+      network: Network.ETH_SEPOLIA,
     };
 
     const alchemy = new Alchemy(config);
